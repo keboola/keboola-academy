@@ -65,7 +65,7 @@
         "Suffix": ".s3-website.cn-northwest-1.amazonaws.com.cn"
       },
       "eu-central-1": {
-        "Suffix": ".s3-website-eu-central-1.amazonaws.com"
+        "Suffix": ".s3-website.eu-central-1.amazonaws.com"
       }
     }
   },
