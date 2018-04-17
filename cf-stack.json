@@ -169,6 +169,9 @@
               {
                 "Ref": "AWS::StackName"
               },
+              {
+                "Ref": "AWS::Region"
+              },
               "Deploy"
             ]
           ]
@@ -208,10 +211,10 @@
             "-",
             [
               {
-                "Ref": "AWS::Region"
+                "Ref": "AWS::StackName"
               },
               {
-                "Ref": "AWS::StackName"
+                "Ref": "AWS::Region"
               },
               "Deploy"
             ]
