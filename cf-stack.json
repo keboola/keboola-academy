@@ -91,7 +91,7 @@
               "QueryString": "true"
             },
             "TargetOriginId": "only-origin",
-            "ViewerProtocolPolicy": "allow-all"
+            "ViewerProtocolPolicy": "redirect-to-https"
           },
           "DefaultRootObject": "index.html",
           "ViewerCertificate": {
