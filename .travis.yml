@@ -1,0 +1,9 @@
+
+
+deploy:
+  provider: s3
+  bucket: $AWS_S3_BUCKET
+  local-dir: src
+  skip_cleanup: true
+  cache_control: max-age=300
+  detect_encoding: true
