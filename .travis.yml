@@ -1,6 +1,7 @@
 
 
 install: true
+script: true
 
 deploy:
   provider: s3
