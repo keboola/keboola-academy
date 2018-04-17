@@ -11,4 +11,5 @@ deploy:
   skip_cleanup: true
   cache_control: max-age=300
   detect_encoding: true
-  all_branches: true
+  on:
+    all_branches: true
