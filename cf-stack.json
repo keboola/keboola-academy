@@ -1,11 +1,7 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "Keboola Academy Static Website AWS resource",
+  "Description": "Static website hosted on S3 with forced HTTPS and Cloudfront",
   "Parameters": {
-    "DNS": {
-      "Type": "String",
-      "Default": "keboola.academy"
-    },
     "AcmCertificateArn": {
       "Type": "String",
       "Description": "ARN of ACM certificate"
@@ -131,6 +127,71 @@
           ]
         }
       }
+    },
+    "DeployPolicy": {
+      "Type": "AWS::IAM::ManagedPolicy",
+      "Properties": {
+        "Description": {
+          "Fn::Join": [
+            " - ",
+            [
+              {
+                "Ref": "AWS::StackName"
+              },
+              "Deploy"
+            ]
+          ]
+        },
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:PutObject"
+              ],
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    {
+                      "Fn::GetAtt": [
+                        "S3BucketForWebsiteContent",
+                        "Arn"
+                      ]
+                    },
+                    "/*"
+                  ]
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "DeployGroup": {
+      "Type": "AWS::IAM::Group",
+      "Properties": {
+        "GroupName": {
+          "Fn::Join": [
+            "-",
+            [
+              {
+                "Ref": "AWS::Region"
+              },
+              {
+                "Ref": "AWS::StackName"
+              },
+              "Deploy"
+            ]
+          ]
+        },
+        "ManagedPolicyArns": [
+          {
+            "Ref": "DeployPolicy"
+          }
+        ]
+      }
     }
   },
   "Outputs": {
@@ -148,6 +209,12 @@
         "Ref": "S3BucketForWebsiteContent"
       },
       "Description": "Name of S3 bucket to hold website content"
+    },
+    "DeployGroupName": {
+      "Value": {
+        "Ref": "DeployGroup"
+      },
+      "Description": "Name of Group for deploy (ci) user"
     }
   }
 }
