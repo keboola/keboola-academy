@@ -5,6 +5,11 @@
     "AcmCertificateArn": {
       "Type": "String",
       "Description": "ARN of ACM certificate"
+    },
+    "CNames": {
+      "Type": "CommaDelimitedList",
+      "Description": "One or more CNAMEs separated by commas",
+      "Default": "keboola.academy"
     }
   },
   "Mappings": {
@@ -113,6 +118,9 @@
         "DistributionConfig": {
           "Comment": "Keboola Academy - CDN for S3-backed website",
           "Enabled": "true",
+          "Aliases": {
+            "Ref": "CNames"
+          },
           "DefaultCacheBehavior": {
             "ForwardedValues": {
               "QueryString": "true"
