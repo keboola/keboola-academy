@@ -116,7 +116,17 @@
       "Type": "AWS::CloudFront::Distribution",
       "Properties": {
         "DistributionConfig": {
-          "Comment": "Keboola Academy - CDN for S3-backed website",
+          "Comment": {
+            "Fn::Join": [
+              " - ",
+              [
+                {
+                  "Ref": "AWS::StackName"
+                },
+                "CDN for S3-backed website"
+              ]
+            ]
+          },
           "Enabled": "true",
           "Aliases": {
             "Ref": "CNames"
