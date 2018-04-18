@@ -117,23 +117,26 @@ input[type=text] {
     padding-right: 8px;
 }
 
-input[type=text]:focus {
+a.submit:focus {
     outline: 0;
 }
 
-input[type=submit] {
+a.submit {
+    display: block;
     width: 242px;
     background: #fff;
     color: #25B8EB;
     border-radius: 3px;
     border: 0;
-
+    padding: 12px 0;
+    margin: 5px auto;
+    text-decoration: none;
+    text-align: center;
 }
 
-input[type=submit]:hover {
+a.submit:hover {
     opacity: 0.8;
     cursor: pointer;
-
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
