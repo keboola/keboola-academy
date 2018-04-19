@@ -146,7 +146,7 @@
             "TargetOriginId": "only-origin",
             "ViewerProtocolPolicy": "redirect-to-https"
           },
-          "DefaultRootObject": "index.html",
+          "DefaultRootObject": "",
           "ViewerCertificate": {
             "AcmCertificateArn": {
               "Ref": "LegacyAcmCertificateArn"
