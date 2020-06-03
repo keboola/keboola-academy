@@ -89,38 +89,6 @@
         }
       }
     },
-    "S3BucketPolicy": {
-      "Type": "AWS::S3::BucketPolicy",
-      "Properties": {
-        "Bucket": {
-          "Ref": "S3BucketForWebsiteContent"
-        },
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Sid": "AllowPublicRead",
-              "Action": [
-                "s3:GetObject"
-              ],
-              "Effect": "Allow",
-              "Resource": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:aws:s3:::",
-                    {
-                      "Ref": "S3BucketForWebsiteContent"
-                    },
-                    "/*"
-                  ]
-                ]
-              },
-              "Principal": "*"
-            }
-          ]
-        }
-      }
-    },
     "WebsiteCDN": {
       "Type": "AWS::CloudFront::Distribution",
       "Properties": {
