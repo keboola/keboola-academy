@@ -83,7 +83,8 @@
           "RedirectAllRequestsTo": {
             "HostName": {
               "Ref": "TargetHostname"
-            }
+            },
+            "Protocol": "https"
           }
         }
       }
